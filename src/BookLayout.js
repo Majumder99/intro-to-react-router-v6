@@ -10,7 +10,7 @@ const BookLayout = () => {
       <br />
       <Link to="/books/new">Book New</Link>
       {/* Outlet will render the current route */}
-      <Outlet />
+      <Outlet context={{ hello: "I am sourav" }} />
     </>
   );
 };
