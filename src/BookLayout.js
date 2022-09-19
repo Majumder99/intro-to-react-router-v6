@@ -1,7 +1,11 @@
-import React from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, NavLink, Outlet, useSearchParams } from "react-router-dom";
 
 const BookLayout = () => {
+  const [searchParams, setSearchParams] = useSearchParams({ n: 3 });
+  console.log(searchParams.get("n"));
+  const number = searchParams.get("n");
+  // const [number, setNumber] = useState(3);
   return (
     <>
       {/* Link has three attributes
@@ -31,9 +35,16 @@ const BookLayout = () => {
       <br />
       <NavLink to="/books/2">Book2</NavLink>
       <br />
+      <NavLink to={`/books/${number}`}>Book{number}</NavLink>
+      <br />
       <NavLink to="/books/new">Book New</NavLink>
       {/* Outlet will render the current route */}
       <Outlet context={{ hello: "I am sourav" }} />
+      <input
+        type="number"
+        value={number}
+        onChange={(e) => setSearchParams({ n: e.target.value })}
+      />
     </>
   );
 };

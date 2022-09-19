@@ -1,4 +1,11 @@
-import { Link, Route, Routes, useRoutes } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Route,
+  Routes,
+  useLocation,
+  useRoutes,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import BookRoutes from "./BookRoutes";
@@ -22,6 +29,8 @@ function App() {
   //   },
   // ]);
 
+  const location = useLocation();
+  console.log(location);
   return (
     <>
       {/* Multiple routes */}
@@ -31,10 +40,14 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/" state="hi">
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/books">Books</Link>
+            <NavLink end to="/books">
+              Books
+            </NavLink>
           </li>
         </ul>
       </nav>
